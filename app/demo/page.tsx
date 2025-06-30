@@ -5,16 +5,23 @@ import BaseTemplate from "@/templates/base/page";
 import ShadowTemplate from "@/templates/shadow/page";
 import { useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
+import { BaseTemplate as BaseTemplateData } from "@/config/app-data/templates/base";
 
 const DemoPage = () => {
   let template = "";
   if (typeof window !== "undefined") {
-    template = new URLSearchParams(window?.location?.search).get("template") || "";
+    template =
+      new URLSearchParams(window?.location?.search).get("template") || "";
   }
 
   useEffect(() => {
     // Reset scroll position when template changes
     window.scrollTo(0, 0);
+
+    // Update page title dynamically
+    const templateName = template || "Base";
+    document.title = `${BaseTemplateData.fullName} - ${BaseTemplateData.tagline} (${templateName} Template Demo)`;
   }, [template]);
 
   const renderTemplate = () => {
@@ -30,6 +37,21 @@ const DemoPage = () => {
 
   return (
     <div>
+      <Head>
+        <title>{`${BaseTemplateData.fullName} - ${BaseTemplateData.tagline} (${
+          template || "Base"
+        } Template Demo)`}</title>
+        <meta
+          name="description"
+          content={`Demo of ${
+            BaseTemplateData.fullName
+          }'s portfolio using the ${template || "Base"} template. ${
+            BaseTemplateData.miniBio
+          }`}
+        />
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+
       {/* Demo Banner */}
       <div className="fixed top-0 left-0 right-0 bg-gray-900 text-white z-50 py-3 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
