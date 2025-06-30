@@ -11,8 +11,10 @@ import {
   Palette,
   Smartphone,
   ArrowRight,
+  FileText,
+  Play,
+  Sparkles,
 } from "lucide-react";
-import { toast } from "sonner";
 
 const CLONE_PORTFOLIO_COMMAND =
   "git clone https://github.com/IDAN-DEVS/portify.git";
@@ -54,6 +56,21 @@ const LandingPage = () => {
       icon: <Smartphone className="w-6 h-6" />,
       title: "Mobile First",
       description: "Looks great on all devices",
+    },
+    {
+      icon: <FileText className="w-6 h-6" />,
+      title: "Auto CV Generation",
+      description: "Generate professional PDFs from your portfolio data",
+    },
+    {
+      icon: <Sparkles className="w-6 h-6" />,
+      title: "SEO Optimized",
+      description: "Built-in SEO best practices for better visibility",
+    },
+    {
+      icon: <Download className="w-6 h-6" />,
+      title: "One-Click Deploy",
+      description: "Deploy to Vercel, Netlify, or any platform instantly",
     },
   ];
 
@@ -155,9 +172,9 @@ const LandingPage = () => {
             transition={{ delay: 0.5 }}
             className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            A modern portfolio generator that lets you create stunning developer
-            portfolios without writing a single line of code. Choose a template,
-            update configs, deploy.
+            A modern portfolio generator that creates stunning developer
+            portfolios and auto-generates professional CVs without writing code.
+            Choose a template, update configs, deploy.
           </motion.p>
 
           <motion.div
@@ -177,7 +194,6 @@ const LandingPage = () => {
                 className="px-6 py-4 bg-white text-black hover:bg-gray-200 transition-colors flex items-center space-x-2"
                 onClick={() => {
                   navigator.clipboard.writeText(CLONE_PORTFOLIO_COMMAND);
-                  toast.success("Command copied to clipboard");
                 }}
               >
                 <Download className="w-4 h-4" />
@@ -228,6 +244,146 @@ const LandingPage = () => {
               <p className="text-gray-400">{feature.description}</p>
             </motion.div>
           ))}
+        </div>
+      </div>
+
+      {/* Demo Video Section */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">See Portify in Action</h2>
+          <p className="text-gray-400 text-lg">
+            Watch how easy it is to create your portfolio
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 overflow-hidden relative group">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors group-hover:scale-110 transform duration-300">
+                <Play className="w-8 h-8 text-white ml-1" />
+              </button>
+            </div>
+            <div className="absolute bottom-4 left-4 right-4 text-center">
+              <p className="text-gray-400 text-sm">
+                Demo video coming soon - watch the complete setup process
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* CV Generation Section */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">Auto-Generated CV</h2>
+          <p className="text-gray-400 text-lg">
+            Your portfolio data automatically becomes a professional CV
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-bold">1</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Fill Your Portfolio
+                  </h3>
+                  <p className="text-gray-400">
+                    Add your projects, experience, and skills to your portfolio
+                    configuration
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-bold">2</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Visit /resume</h3>
+                  <p className="text-gray-400">
+                    Navigate to the built-in resume page to see your formatted
+                    CV
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-bold">3</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Download PDF</h3>
+                  <p className="text-gray-400">
+                    Click &quot;Download PDF&quot; to get a professional resume
+                    ready for applications
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <a
+                  href="/resume"
+                  target="_blank"
+                  className="inline-flex items-center space-x-2 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-400 transition-colors"
+                >
+                  <FileText className="w-5 h-5" />
+                  <span>Try CV Generator</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="bg-white rounded-lg shadow-2xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+              <div className="bg-gray-100 h-4 rounded mb-4"></div>
+              <div className="space-y-3">
+                <div className="bg-gray-200 h-3 rounded w-3/4"></div>
+                <div className="bg-gray-200 h-3 rounded w-1/2"></div>
+                <div className="bg-gray-200 h-3 rounded w-5/6"></div>
+              </div>
+              <div className="mt-6 space-y-2">
+                <div className="bg-gray-300 h-2 rounded w-full"></div>
+                <div className="bg-gray-300 h-2 rounded w-4/5"></div>
+                <div className="bg-gray-300 h-2 rounded w-3/5"></div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-orange-500 text-white p-2 rounded-lg">
+                <FileText className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              PDF Ready
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -403,7 +559,16 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
-            <p>Open source • Created with ❤️ by JC CODER and IDAN DEVS</p>
+            <p>
+              Open source • Created with ❤️ by{" "}
+              <a href="https://github.com/JC-CODER" className="text-white">
+                JC CODER
+              </a>{" "}
+              and{" "}
+              <a href="https://github.com/IDAN-DEVS" className="text-white">
+                IDAN DEVS
+              </a>
+            </p>
           </div>
         </div>
       </footer>

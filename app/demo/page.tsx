@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { AVAILABLE_TEMPLATES } from "@/config/app-data/templates/config";
 import BaseTemplate from "@/templates/base/page";
 import ShadowTemplate from "@/templates/shadow/page";
@@ -8,8 +7,10 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 const DemoPage = () => {
-  const searchParams = useSearchParams();
-  const template = searchParams.get("template");
+  let template = "";
+  if (typeof window !== "undefined") {
+    template = new URLSearchParams(window?.location?.search).get("template") || "";
+  }
 
   useEffect(() => {
     // Reset scroll position when template changes
@@ -49,7 +50,7 @@ const DemoPage = () => {
               Use Template
             </Link>
             <Link
-              href="/templates"
+              href="/#templates"
               className="text-sm bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors"
             >
               ← Back to Templates
