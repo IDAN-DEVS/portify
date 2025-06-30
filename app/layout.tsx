@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppSettingData } from "../config/app-data/appSetting";
 import { BaseTemplate } from "../config/app-data/templates/base";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: `${AppSettingData.appName} - ${BaseTemplate.fullName} Portfolio`,
@@ -15,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Toaster />
       <body className="antialiased">{children}</body>
     </html>
   );

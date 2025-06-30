@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -11,6 +12,10 @@ import {
   Smartphone,
   ArrowRight,
 } from "lucide-react";
+import { toast } from "sonner";
+
+const CLONE_PORTFOLIO_COMMAND =
+  "git clone https://github.com/IDAN-DEVS/portify.git";
 
 const LandingPage = () => {
   const templates = [
@@ -26,12 +31,12 @@ const LandingPage = () => {
       image: "/images/templates/shadow.png",
       demoUrl: "/demo?template=shadow",
     },
-    {
-      name: "Neon Template",
-      description: "Vibrant and futuristic design",
-      image: "/images/templates/neon.png",
-      demoUrl: "/demo?template=neon",
-    },
+    // {
+    //   name: "Neon Template",
+    //   description: "Vibrant and futuristic design",
+    //   image: "/images/templates/neon.png",
+    //   demoUrl: "/demo?template=neon",
+    // },
   ];
 
   const features = [
@@ -164,11 +169,17 @@ const LandingPage = () => {
             <div className="flex items-center bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
               <input
                 type="text"
-                placeholder="git clone https://github.com/IDAN-DEVS/portify.git"
+                placeholder={CLONE_PORTFOLIO_COMMAND}
                 className="bg-transparent px-6 py-4 text-gray-300 placeholder-gray-500 flex-1 min-w-0 w-96"
                 readOnly
               />
-              <button className="px-6 py-4 bg-white text-black hover:bg-gray-200 transition-colors flex items-center space-x-2">
+              <button
+                className="px-6 py-4 bg-white text-black hover:bg-gray-200 transition-colors flex items-center space-x-2"
+                onClick={() => {
+                  navigator.clipboard.writeText(CLONE_PORTFOLIO_COMMAND);
+                  toast.success("Command copied to clipboard");
+                }}
+              >
                 <Download className="w-4 h-4" />
                 <span>Copy</span>
               </button>
@@ -247,8 +258,13 @@ const LandingPage = () => {
               transition={{ delay: index * 0.1 }}
               className="bg-gray-900/50 border border-gray-800 rounded-xl overflow-hidden hover:border-gray-700 transition-colors group"
             >
-              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <div className="text-gray-500 text-sm">Template Preview</div>
+              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
+                <Image
+                  src={template.image}
+                  alt={template.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
@@ -373,7 +389,7 @@ const LandingPage = () => {
                 GitHub
               </a>
               <a
-                href="/templates"
+                href="#templates"
                 className="hover:text-white transition-colors"
               >
                 Templates
