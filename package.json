@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run init-config && next build",
     "start": "next start",
     "lint": "next lint",
-    "init-config": "ts-node scripts/init-config.mjs"
+    "init-config": "node scripts/init-config.mjs"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
