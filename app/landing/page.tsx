@@ -181,9 +181,9 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center "
           >
-            <div className="flex items-center bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
+            <div className="flex items-center bg-gray-900 rounded-lg border border-gray-700 overflow-hidden w-11/12 md:w-auto">
               <input
                 type="text"
                 placeholder={CLONE_PORTFOLIO_COMMAND}
@@ -454,7 +454,7 @@ const LandingPage = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-center justify-center">
           {[
             {
               step: "1",
@@ -478,7 +478,7 @@ const LandingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gray-900/50 border border-gray-800 rounded-xl p-6"
+              className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 h-[200px] w-[350px] md:w-auto"
             >
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
@@ -486,8 +486,8 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-lg font-semibold">{item.title}</h3>
               </div>
-              <div className="bg-black rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
-                <pre>{item.code}</pre>
+              <div className="bg-black rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto  [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-orange-500 [&::-webkit-scrollbar-thumb]:rounded-full ">
+                <pre className="">{item.code}</pre>
               </div>
             </motion.div>
           ))}
